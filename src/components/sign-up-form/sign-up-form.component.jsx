@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { createAuthUserWithEmailAndPassword, createUserDocumentFromAuth } from '../../utils/firebase/firebase.utils';
-import formInput from '../form-input/form-input.component';
+import FormInput from '../form-input/form-input.component';
+import './sign-up-form.styles.scss';
+import Button from '../button/button.component'
 
 const defaultFormFields = {
     displayName: '',
@@ -41,15 +43,16 @@ const SignUpForm = () => {
 
     const handleChange = (event) => {
         const { name, value } = event.target;
-        console.log(event);
+        //console.log(event);
         setFormFields({ ...formFields, [name]: value });
     }
 
     return (
-        <div>
-            <h1>Sign up with your email anda password</h1>
+        <div className='sign-up-container'>
+            <h2>Don't have an account?</h2>
+            <span>Sign up with your email anda password</span>
             <form onSubmit={handleSubmit}>
-                <formInput
+                <FormInput
                     label='Name'
                     type='text' 
                     required 
@@ -58,7 +61,7 @@ const SignUpForm = () => {
                     value={displayName}
                 />
                 
-                <formInput
+                <FormInput
                     label='Email'
                     type='text' 
                     required 
@@ -67,7 +70,7 @@ const SignUpForm = () => {
                     value={email}
                 />
                 
-                <formInput
+                <FormInput
                     label='Password'
                     type='text' 
                     required 
@@ -76,7 +79,7 @@ const SignUpForm = () => {
                     value={password}
                 />
                 
-                <formInput
+                <FormInput
                     label='Confirm Password'
                     type='text' 
                     required 
@@ -85,7 +88,7 @@ const SignUpForm = () => {
                     value={confirmPassword}
                 />
                 
-                <button type='submit'>Sign Up</button>
+                <Button type='submit'>Sign Up</Button>
             </form>
         </div>
     )
